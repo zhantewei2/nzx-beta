@@ -1,0 +1,19 @@
+@mixin Flex($self:false,$content:false,$inline:null){
+  display:if($inline,inline-flex,flex);
+  @if $self{
+    align-items:$self;
+  }
+  @if $content{
+    justify-content: $content;
+  }
+}
+@mixin FlexColumn(){
+  display:flex;
+  flex-direction:column;
+}
+
+@mixin FlexPer($per:1){
+  flex-basis: 0;
+  flex-grow: $per;
+  flex-shrink: $per;
+}

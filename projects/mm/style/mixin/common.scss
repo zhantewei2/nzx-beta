@@ -1,0 +1,173 @@
+@mixin Center{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin UseAn($name,$time:$bezier-time){
+  .#{$preName}-#{$name}{
+    animation:$name $time;
+    @content;
+  }
+}
+@mixin LeaveAn($name,$time:$bezier-time){
+  @include UseAn($name,$time){
+    animation-fill-mode:forwards;
+  }
+}
+@mixin overRules(){
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+@mixin AvatarBg(){
+  background-color:$color-light;
+}
+@mixin Radius($radius:$base-radius){
+  border-radius:$radius;
+}
+@mixin ActiveFine($color:$color-primary){
+  &::before{
+    border-color:$color;
+  }
+  color:$color;
+}
+@mixin FineAllBorder2($color:$color-gain,$radius:$base-radius,$toggle:false,$bgColor:$color-bg2,$index:-1){
+  z-index:$index;
+  display:block;
+  position:absolute;
+  @if($toggle){
+    border-top:1px solid $color;
+    border-bottom:1px solid $color;
+  }
+  @else{
+    border:1px solid $color;
+  }
+  background-color:$bgColor;
+  @if str-index(inspect($radius),'%'){
+    border-radius:$radius;
+  }@else{
+    border-radius:$radius*2.5;
+  }
+  transform:scale(.4,.4);
+  transform-origin:0 0;
+  width:250%;
+  height:250%;
+  left:0;
+  top:0;
+}
+
+@mixin FineAllBorder($color:$color-gain,$radius:$base-radius,$toggle:false,$bgColor:$color-bg2){
+  position:relative;
+  z-index:1;
+  &::before{
+    content:'';
+    @include FineAllBorder2($color,$radius ,$toggle ,$bgColor,-1 );
+  }
+}
+
+
+@mixin FineBorder($pos:bottom,$color:$color-gain,$height:1px,$imageColor:null,$whiteBetween:false){
+  position:relative;
+  &::before{
+    content:'';
+    display:block;
+    @if($pos == right or $pos == left){
+      width:$height;
+      height:100%;
+      #{$pos}:0;
+      top:0;
+      transform:scaleX(0.3);
+    }
+    @else{
+      height:$height;
+      width:if($whiteBetween,calc(100% - #{$ztw-list-white*2}),100%);
+      transform:scaleY(0.3);
+      left:if($whiteBetween,$ztw-list-white,0);
+      @if($pos == bottom){
+        bottom:0
+      }
+      @else{
+        top:0
+      }
+    }
+    position:absolute;
+    background:$color;
+    @if($imageColor){
+      background-image:$imageColor;
+    }
+  }
+}
+@mixin CmMatIconSize($value){
+  height:$value !important;
+  width:$value !important;
+  font-size:$value;
+}
+@mixin Between(){
+  display:flex;
+  justify-content: space-between;
+}
+@mixin BaseFC(){
+  color:$font-secondary-color;
+}
+@mixin BaseAbs($top:0,$left:0){
+  position:absolute;
+  top:$top;
+  left:$left;
+}
+@mixin HeightCenter($height){
+  height:$height;
+  line-height: $height;
+}
+
+@mixin FineVertical(){
+  transform:scaleX(.3);
+  width:1px;
+}
+@mixin Ellipsis(){
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+
+%fine-vertical{
+  @include FineVertical();
+}
+@mixin Badge($padding:$badge-padding){
+  border-radius:50%;
+  line-heihgt:1;
+  padding:$padding;
+}
+
+@mixin Height($height){
+  min-height:$height;
+  height:$height;
+}
+@mixin Index($key){
+  z-index:map-get($index,$key);
+}
+@mixin coverBg($percent:.35){
+  background-color:rgba(black,$percent);
+}
+
+@mixin AbsCenter2($w,$h,$parentW,$parentH){
+  position:absolute;
+  top:($parentH - $h)/2;
+  left:($parentW - $w)/2;
+}
+@mixin noneTap(){
+  -webkit-tap-highlight-color: transparent;
+}
+@mixin IOS_scroll(){
+  -webkit-overflow-scrolling: touch;
+  transform-style:preserve-3d;
+  backface-visibility: hidden;
+}
+@mixin Base-background(){
+  background-size:cover;
+  background-position: center;
+  background-color:$color-light2;
+}
+@mixin boundBottom(){
+  bottom:0;
+  bottom:constant(safe-area-inset-bottom);
+  bottom:env(safe-area-inset-bottom);
+}

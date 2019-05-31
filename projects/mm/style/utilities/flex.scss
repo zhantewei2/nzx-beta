@@ -1,0 +1,66 @@
+.flex{
+  @include Flex();
+}
+.between{
+  @include Flex($content:space-between);
+}
+.between-center{
+  @include Flex($content:space-between,$self:center);
+}
+.around{
+  @include Flex($content:space-around)
+}
+.center{
+  @include Flex(center,center);
+}
+.inline-center{
+  @include Flex(center,center,true);
+}
+.center-column{
+  @include Flex($self:center);
+  flex-flow:column;
+}
+.flex-column{
+  @include Flex();
+  flex-flow:column;
+}
+.flex-wrap{
+  flex-wrap:wrap;
+}
+.right{
+  text-align:right;
+}
+.middle{
+  vertical-align: middle !important;
+}
+.v-center{
+  @include Flex($self:center);
+}
+@each $key,$value in (
+  right:flex-end,
+  left:flex-start,
+  between:space-between,
+  center:center,
+  around:space-around
+){
+  .-#{$key}{
+    justify-content:$value;
+  }
+}
+
+@each $key,$value in (
+  top:flex-start,
+  bottom:flex-end,
+  center:center
+){
+  .--#{$key}{
+    align-items:$value;
+  }
+}
+@for $i from 1 through $flex-count{
+  .flex-#{$i}{
+    flex-grow:$i;
+    flex-shrink:$i;
+    flex-basis:0;
+  }
+}

@@ -1,0 +1,79 @@
+$brand-image-title-padding:5px 10px;
+$brand-image-title-h:40px;
+$upload-w:90px;
+$upload-margin:8px 5px;
+$sideRight-w:250px;
+$sideRight-body-padding:10px;
+$sideRight-bottom-padding:10px;
+
+$search-list-padding:10px 15px;
+$search-btn-w:50px;
+$tabBar-btn-color:darken($color-gain,5%);
+
+$turn-bar-item-len:8px;
+$menu-toggle-w:2.3rem;
+$menu-toggle-h:2.2rem;
+$menu-margin-t:.5rem;
+$menu-rotate:35deg;
+
+$modal2-svg-w:120px;
+$modal2-bottom-h:50px;
+$modal2-bg:rgba($color-bg2,.9);
+$tabBar-size:(
+  sm:(
+    itemW:52px,
+    barBottom:2px,
+    barHeight:2px,
+    height:40px,
+    font:14px,
+  ),
+  md:(
+    itemW:70px,
+    barBottom:5px,
+    barHeight:3px,
+    height:40px,
+    font:13px
+  ),
+  lg:(
+    font:14px,
+    itemW:100px,
+    barBottom:5px,
+    barHeight:3px,
+    height:50px
+  )
+);
+$tabBar-theme:(
+  darken:(
+    bg:map-get($colors,wmBg),
+    btnColor:darken($color-gain,5%),
+    btnColorActive:$color-bg2,
+    thumbBg:$color-wm,
+  ),
+  light:(
+    bg:$color-bg2,
+    btnColor:$color-muted2,
+    btnColorActive:$color-primary,
+    barBottom:0,
+    barHeight:2px,
+    thumbBg:$color-primary,
+  )
+);
+
+@import 'pagination';
+@import 'filtrate';
+@import 'common';
+@import 'level';
+@import 'image';
+@import 'inputToggle';
+@import 'picker';
+@import 'bottomSheet';
+@import 'upload';
+@import 'turnPage';
+@import 'moreBg';
+@import 'sideRight';
+@import 'searchSort';
+@import 'routerPage';
+@import 'tab';
+@import 'speech';
+@import 'menuToggle';
+@import 'modal2';

@@ -1,0 +1,62 @@
+@mixin BaseTable{
+  border-collapse:collapse;
+
+}
+@mixin Table($td-padding:$table-td-padding,$th-padding:$table-th-padding,$font-size:null){
+  @include BaseTable();
+  & td{
+    text-align:center;
+    padding:$td-padding;
+    @if $font-size{
+      font-size:$font-size;
+    }
+  }
+  & th{
+    text-align:center;
+    padding:$th-padding;
+    @if $font-size{
+      font-size:$font-size;
+    }
+  }
+}
+@mixin TableLight{
+  &>thead>tr{
+    //border-bottom:1px solid $color-muted3;
+    border-bottom:1px solid $color-main-border;
+  }
+  &>tbody>tr{
+    border-bottom:1px solid gainsboro;
+  }
+}
+@mixin Stripe($tag,$color:$color-light){
+  & #{$tag}:nth-child(even){
+    background-color:$color;
+  }
+}
+@mixin TableHeader{
+
+    //@include BtnBackground(lighten($color-primary,10%));
+    &>th,&>tr{
+      color:white;
+    }
+    & th{
+      font-weight:100;
+    }
+}
+@mixin MobileTable(
+  $fontSize:13px,
+  $percent:3,
+  $tdPadding:$table-td-padding-m,
+  $thPadding:$table-th-padding-m
+){
+  $radius:5px;
+  $self-td-p:$tdPadding*$percent 0;
+  $self-th-p:$thPadding*$percent 0;
+  $self-font:$fontSize*$percent;
+  @include Table($self-td-p,$self-th-p,$self-font);
+  @include Radius($radius);
+
+  transform-origin: 0 0;
+  width:100%*$percent;
+  transform:scale(1/$percent,1/$percent);
+}

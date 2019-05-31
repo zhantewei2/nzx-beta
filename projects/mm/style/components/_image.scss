@@ -1,0 +1,19 @@
+
+.cm-brand-image{
+  border-radius:10px;
+  @include CmShadow();
+  overflow:hidden;
+  border:1px solid $color-main-border;
+}
+.cm-brand-image-title{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  color:$color-bg;
+  padding:$brand-image-title-padding;
+  background-color:rgba(black,.2);
+  min-height:$brand-image-title-h;
+  //兼容X5浏览器
+  border-radius:0 0 10px 10px;
+}

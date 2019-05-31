@@ -1,0 +1,96 @@
+.cm-tabBar-wrapper{
+  display:block;
+  overflow-x:auto;
+  &::-webkit-scrollbar{
+    height:0;
+  }
+}
+.cm-block-group{
+  @include FlexColumn();
+  .ztw-turn-page{
+    flex-grow:1;
+  }
+}
+.cm-tabBar-content{
+  display:inline-flex;
+
+  white-space: nowrap;
+  height:40px;
+  position:relative;
+  .cm-tabBar-bar-content{
+    position:absolute;
+    left:0;
+    width:100%;
+  }
+  .cm-tabBar-thumb{
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    border-radius:2px;
+  }
+}
+.cm-tabBar-bar{
+  width:20px;
+}
+.cm-tabBar-item{
+  display:inline-block;
+  flex-grow:1;
+  text-align: center;
+  transition:color $bezier-time;
+  &.tabActive{
+    font-weight:400;
+    font-size:15px !important;
+
+  }
+}
+@each $key in sm,md{
+  $value:map-get($tabBar-size,$key);
+  $itemW:map-get($value,itemW);
+  $barBottom:map-get($value,barBottom);
+  $barHeight:map-get($value,barHeight);
+  $height:map-get($value,height);
+  $font:map-get($value,font);
+  .cm-tabBar-#{$key}{
+    height:$height;
+    .cm-tabBar-item{
+      min-width:$itemW;
+      width:$itemW;
+      line-height:$height;
+      font-size:$font;
+    }
+    .cm-tabBar-bar-content{
+      bottom:$barBottom;
+      height:$barHeight;
+    }
+    .cm-tabBar-thumb{
+      width:25px;
+    }
+  }
+}
+@each $key,$value in $tabBar-theme{
+  $bg:map-get($value,bg);
+  $btnColor:map-get($value,btnColor);
+  $btnColorActive:map-get($value,btnColorActive);
+  $barBottom:map-get($value,barBottom);
+  $barHeight:map-get($value,barHeight);
+  $thumbBg:map-get($value,thumbBg);
+  .cm-tabBar-theme-#{$key}{
+    background:$bg;
+    .cm-tabBar-item{
+      color:$btnColor;
+      &.tabActive{
+        color:$btnColorActive;
+      }
+    }
+    .cm-tabBar-thumb{
+      background:$thumbBg;
+    }
+    @if($barBottom or $barHeight){
+      .cm-tabBar-bar-content{
+        bottom:$barBottom !important;
+        height:$barHeight !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+%modal2-bottom-line{
+  position:absolute;
+  bottom:0;
+  height:$modal2-bottom-h;
+  border-bottom:1px solid black;
+  //width:calc(60% - #{$modal2-svg-w});
+}
+.modal2{
+  position:relative;
+  width:90%;
+  margin-top:-50px;
+}
+.modal2-bottom-left{
+  @extend %modal2-bottom-line;
+  left:0;
+}
+.modal2-bottom-right{
+  @extend %modal2-bottom-line;
+  right:0;
+}
+.modal2-content{
+  @include BaseAbs();
+  width:100%;
+  height:calc(100% - 30px);
+  overflow-y:auto;
+}
+.modal2-close{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  @extend %cm-circle-btn;
+  height:40px;
+  width:40px;
+  @include ModalShadow();
+  transform:translate3d(-50%,150%,0) scale(.5,.5);
+  opacity:0;
+  @include An_node();
+}
+
+.modal2-close-enter{
+  transform:translate3d(-50%,30%,0);
+  opacity:.9;
+
+}
+.modal2-path{
+  fill:$modal2-bg;
+}
+@mixin Modal2Close($color:$modal2-bg){
+  border:1px solid $color;
+  color:$color;
+}
+
+.modal2-darken{
+  .modal2-close{
+    @include Modal2Close($color-wm0);
+  }
+  .modal2-path{
+    fill:$color-wm0;
+  }
+}

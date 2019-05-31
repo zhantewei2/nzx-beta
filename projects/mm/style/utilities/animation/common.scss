@@ -1,0 +1,45 @@
+@mixin Animation-end($name){
+  animation:$name;
+  animation-fill-mode:forwards;
+}
+
+.an_node{
+  @include An_node();
+}
+@keyframes CmFadeIn{
+  from {opacity:0}
+  to{}
+}
+@keyframes CmFadeOut{
+  from {}
+  to {opacity:0}
+}
+@keyframes CmSpinner{
+  from{}
+  to{transform:rotate(360deg)}
+}
+@keyframes CmBottomEnter{
+  from{transform:translate3d(0,100%,0)}
+  to{}
+}
+
+@keyframes CmBottomLeave{
+  from{}
+  to{transform:translate3d(0,100%,0)}
+}
+
+@keyframes CmTopEnter{
+  from{transform:translate3d(0,-100%,0);opacity:.5}
+  to{}
+}
+.cm-spinner{
+  animation:CmSpinner 1s linear;
+  animation-iteration-count: infinite;
+}
+.cm-an-fadeIn{
+  animation:CmFadeIn .3s ease-out;
+}
+.cm-an-topEnter{
+  animation:CmTopEnter .3s ease-out;
+}
+

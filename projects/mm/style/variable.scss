@@ -1,0 +1,355 @@
+$isApp:true;
+$preName:cm;
+$color-light:rgb(248,248,250);
+$color-bg:white;
+$color-bg2:white;
+$color-bg3:rgb(249,249,249);
+$color-gain:#ddd;
+$color-light-border:rgb(230,230,230);
+$font-secondary-color:rgb(38,38,38);
+$color-muted:lighten(gray,10%);
+$color-main-border:#edf2f9;
+$color-muted2:mix($font-secondary-color,white,70%);
+$color-muted3:lighten($color-muted,20%);
+$color-underline:rgb(240,240,240);
+$color-underline2:rgb(245,245,245);
+$color-light2:#f9fbfd;
+$color-bg-light2:lighten(#F1F3FA,1%);
+$markdown-color:#314659;
+$color-font2:rgb(108,117,125);
+$color-font2-light:rgb(142,156,163);
+$color-wm0:#0a0526;
+$color-darkenContent:mix($color-wm0,$color-bg2,80%);
+
+
+$base-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+
+$content-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+
+$base-line-height:1.6;
+$base-font-size:14px;
+$sm-font-size:12px;
+$base-radius:2px;
+$chip-radius:10px;
+$circle-radius:15px;
+
+$icon-font:(
+  ss:12px,
+  sm:14px,
+  md:18px,
+  lg:22px,
+  ll:24px
+);
+$color-blue:#4A8BFA;
+$colors:(
+  p:#F44336,
+  bg:$color-bg2,
+  bg2:$color-bg,
+  wmBg:#0a0526,
+  success:#03B159,
+
+);
+//wm
+$color-wm-begin:map-get($colors,p);
+$color-wm-end:lighten(map-get($colors,p),10%);
+
+@function ColorWm($pos:left,$opacity:null){
+  //@return #F44336;
+   @return linear-gradient(to #{$pos},if($opacity,rgba($color-wm-begin,$opacity),$color-wm-begin),if($opacity,rgba($color-wm-end,$opacity),$color-wm-end))
+}
+
+$color-wm:ColorWm();
+$color-wm-v:ColorWm($pos:bottom);
+
+
+$wm-radius:5px;
+
+
+
+$color-primary:map-get($colors,p);
+
+
+$colors-material:(
+  primary:black,
+  accent:#118ab2,
+  warn:#F44336,
+  tip:#ff9900,
+  fail:#ccc
+);
+
+$colors-all:map-merge(map-merge($colors,$colors-material),(
+         darkenContent:$color-darkenContent,
+        muted2:$color-muted2,
+        blue:$color-blue,
+        wt:$color-bg
+));
+//btn
+$color-disabled:rgba(black,.3);
+$btn-radius:5px;
+$btn-round-radius:1.5rem;
+$btn-distance:.5rem;
+$btn-colors-collection:wm,accent,warn;
+$btn-pure-collection:p,accent,warn,blue,wt;
+$btn-outline-collection:p,accent,warn;
+$btn-border-collection:(
+  darken:wmBg,
+  light:bg
+);
+$btn-ripple-size:(
+  sm:5px,
+  md:10px,
+  block:40px,
+);
+$btn-round-h:40px;
+//fontsize height minWidth lPadding rPadding
+$btn-size:(
+  sm:12px 1.857rem 2.86px 10px 10px,
+  md:13px 2.29rem 4rem 10px 10px
+);
+$blur:4px;
+$color-wm-darken:mix(map-get($colors,wmBg),$color-bg2,80%);
+$index:(
+  header:400,
+  searchHeader:450,
+  pageSearch:99,
+  modalBg:1000,
+  sheetBg:997,
+  sheetContent:998,
+  bottomSheetBg:500,
+  blockLoad:999,
+  filtrateBg:198,
+  filtrateBar:200,
+  filtrateContent:199,
+  message:1005,
+  errBlock:50,
+  emptyBlock:49,
+  loadBlock:51,
+  fixedBottom:40,
+  fullScreen:900,
+  sideRightBg:451,
+  sideRightContent:452,
+  mp3Container:501,
+  snack:1002,
+  fixBody:2
+);
+
+$media:(
+  sm:null 330,
+  md:331 380,
+  lg:381 null
+);
+$upload-media:(
+  sm:90px,
+  md:100px,
+  lg:105px,
+);
+$upload-wrapper-media:(
+  sm:300px,
+  md:330px,
+  lg:345px
+);
+$article-media-w:(
+  sm:10px,
+  md:13px,
+  lg:18px
+);
+
+$cm-line-height:30px;
+
+$cm-tab-label-h:28px;
+
+$cm-list-h:54px;
+$cu-list-h:50px;
+$cu-list-p:0 1rem;
+$cm-btn-close-font:16px;
+$cm-btn-close-padding:3px;
+
+
+//table
+$table-td-padding:16px;
+$table-th-padding:16px;
+$table-td-padding-m:10px;
+$table-th-padding-m:10px;
+
+$search-head-h:50px;
+$search-bottom-h:56px;
+$bottom-bar-h:55px;
+
+//btn
+
+$btn-block-lineH:45px;
+
+$btn-mini-padding:0 13px;
+$btn-min-lineHeight:28px;
+$btn-sm-padding:10px 10px;
+
+$btn-outline-color:lighten(gray,30%);
+$btn-padding:0 1.2rem;
+$btn-min-w:6.3rem;
+$btn-height:36px;
+//spin
+
+$z-spin-base-size:8px;
+$z-spin-r:2em;
+$z-spin-r0:1em;
+//tab
+
+$tab-btn-params:(
+  md:40px 14px 80px,
+  sm:30px 12px 40px
+);
+
+//card
+$card-radius:5px;
+$card-padding:13px 10px 4px 10px;
+$card-text-padding:8px;
+
+//message
+$message-min-w:80px;
+
+//input
+
+$input-body-h:600px;
+$input-auto-maxH:150px;
+$input-shadow-l:3px;
+$input-themes:(
+  primary:(
+    iconRight:5px,
+    iconLeft:5px,
+    radius:1.5rem,
+    bgColor:$color-bg,
+    iconColor:$markdown-color,
+    useBorder:true,
+    placeholderColor:$color-font2-light
+  ),
+  secondary:(
+    iconRight:1rem,
+    iconLeft:1rem,
+    radius:1.5rem,
+    bgColor:$color-bg-light2,
+    iconColor:$markdown-color,
+    useBorder:null,
+    placeholderColor:mix($markdown-color,white)
+  ),
+);
+$input-size:(
+  sm:(padding:8px 8px,iconLeft:5px),
+  lg:(padding:13px 15px,iconLeft:10px)
+);
+$input-line-collections:p blue accent;
+//ripple
+
+//avatar:
+$avatar-h:45px;
+$avatar-w:45px;
+$avatar-name-size:14px;
+
+$avatar-various:(
+  default:(len:45px,font:20px),
+  self:(len:70px,font:20px),
+  other:(len:45px,font:20px),
+  edit:(len:80px,font:30px)
+);
+
+$chip-min-w:35px;
+$chip-padding:3px 6px;
+$ztw-list-white:10px;
+//badge
+$badge-radius:15px;
+$badge-padding:5px;
+$badge-rect-padding:7px 10px;
+$badge-close-w:26px;
+$badge-circle-len:20px;
+//date
+$date-header-padding:0 1rem;
+$date-header-h:5rem;
+$date-ceil-padding:.6rem;
+$date-header-ceil-padding:.5rem;
+$date-ceil-h:2.85rem;
+$date-ceil-active-h:2.5rem;
+$date-month-content-p:.5rem 1rem .5rem 1rem;
+$date-content-w:(
+  sm:300px,
+  md:350px,
+  lg:360px
+);
+$date-ceil-hs:(
+  sm:2.5rem
+);
+$date-content-h:(
+  sm:253px,
+  md:283px,
+  lg:283px
+);
+
+//form:
+
+
+$form:(
+  w:2em,
+  h:2em,
+  checkSize:1.8em,
+  len:4em,
+  radioCenter:.85em,
+  sliderCenter:1.7em
+);
+//light wm darken
+$radio-theme:(
+  name:light wm darken,
+  bg:rgba($color-main-border,.6) rgba($color-main-border,.7) rgba($color-main-border,.3),
+  color:$font-secondary-color $font-secondary-color $color-bg2,
+  borderColor:white transparent transparent,
+  thumbBorder:$font-secondary-color $font-secondary-color $color-bg2,
+  beforeBorder:$color-muted2 transparent transparent,
+  slideBg:wm bg wm,
+  thumbColor:white white white,
+  thumbB:$color-gain transparent transparent,
+  thumbBActive:transparent transparent $color-muted,
+);
+//snack
+$snack-margin:10px;
+$snack-padding:1rem;
+
+//activeSheet
+$activeSheet-theme:(
+  name:light darken,
+  bg:bg darkenContent
+);
+$activeSheet-bottom:10px;
+$activeSheet-w:94%;
+$activeSheet-item-p:2rem;
+$activeSheet-body-h:300px;
+
+
+//list exhibition
+$z-list-padding:0 2rem;
+$z-list-icon-w:40px;
+$ex-dt-w:25%;
+$ex-dd-w:75%;
+$ex-ceil-p:.5rem 1.2rem;
+$ex-header-p:1rem 1.2rem;
+$ex-size:13px;
+$ex-border-color:lighten(#ddd,5%);
+
+$ex-ol-w:5rem;
+$ex-ol-size:13px;
+$ex-ol-li-p:1rem;
+$ex-title-p:1rem;
+$ex-li-p:.7rem 1rem;
+
+
+$a-list:(
+        padding:1rem,
+        avatar-margin:0 1rem 0 0,
+        body-p:.6rem 0,
+        body-color:$color-font2
+);
+
+//app
+$ztw-app:(
+  dscSize:12px,
+  errSize:120px
+);
+
+$app-header-h:50px;
+

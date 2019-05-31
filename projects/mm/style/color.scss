@@ -1,0 +1,77 @@
+.color-light{
+  color:$color-gain;
+}
+.bg-light{
+  background-color:$color-gain;
+}
+.bg-light2{
+  background-color:$color-light2;
+}
+.bg-light3{
+  background-color:$color-light;
+}
+
+@mixin VariantColor($key,$value){
+  .bg-#{$key}{
+    background-color:$value !important;
+    color:yiq-contrast-color($value,$font-secondary-color,$color-bg2) !important;
+  }
+  .bg-light-#{$key}{
+    $lightValue:lighten($value,30%);
+    background-color:$lightValue;
+    color:yiq-contrast-color($lightValue);
+  }
+  .color-#{$key}{
+    color:$value !important;
+  }
+}
+
+@each $key,$value in map_merge($colors,(
+  secondary:$font-secondary-color
+)){
+  @include VariantColor($key,$value);
+}
+@each $key,$value in $colors-material{
+  @include VariantColor($key,$value);
+}
+
+.color-wm{
+  @include WMtext();
+  display:inline-block;
+  &.disabled{
+    background-image:none;
+    -webkit-background-clip:none;
+    color:gainsboro;
+  }
+}
+.bg-wm-light{
+  background-image: ColorWm(bottom right,.2);
+  color:map-get($colors,p);
+}
+.bg-wm{
+  background-image:ColorWm();
+}
+.border-wm{
+  @include WMoutline();
+}
+.bg-gain{
+  background-color:$color-gain;
+}
+.color-light-blue{
+  color:#3C86AF;
+}
+.ztw-bg{
+  background-color:$color-light;
+}
+.color-muted2{
+  color:$color-muted2;
+}
+.color-muted3{
+  color:$color-muted3;
+}
+.color-blue{
+  color:$color-blue;
+}
+.bg-darkenContent{
+  background:mix($color-wm0,$color-bg2,90%)
+}

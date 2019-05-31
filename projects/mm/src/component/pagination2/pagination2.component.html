@@ -1,0 +1,29 @@
+<div [style.display]="topLoading?null:'none'" style="display:none" class="center cm-p-top cm-an_popMin abs-tl cm-pagination-refreshLoad">
+  <div>
+    <ztw-load class="cm-pagination-refresh-icon"></ztw-load>
+    <small>刷新中...</small>
+  </div>
+</div>
+<div class="center abs-tl w-100 " style="display:none" #refreshText>
+  <div #refreshTextContent class="cm-pagination-refreshContent">
+    <ztw-load class="cm-pagination-refresh-icon"></ztw-load>
+    <small >下拉刷新</small>
+    <small class="cm-an_pop">放开刷新</small>
+  </div>
+</div>
+
+<div #container class="container ios-scroll">
+  <div  style="min-height:101%;overflow-x: hidden">
+    <ng-content></ng-content>
+    <div class="align-center parent" style="height:50px">
+      <span class="abs-center" [@Fade] *ngIf="bottomLoading" >
+        <ztw-load class="cm-pagination-refresh-icon"></ztw-load>
+        <small>加载中...</small>
+      </span>
+      <cm-line-content *ngIf="bottomEnd" class="mx-2 my-2">我是有底线的</cm-line-content>
+    </div>
+  </div>
+  <cm-block-load *ngIf="initLoad" pos="top"></cm-block-load>
+  <cm-empty top="true" [emptyMessage]="emptyMessage" *ngIf="isEmpty" (refresh)="handleInitChange()"></cm-empty>
+  <cm-error top="true" [errMessage]="errMessage" *ngIf="isError" (refresh)="handleInitChange()"></cm-error>
+</div>

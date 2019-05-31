@@ -1,0 +1,52 @@
+.#{$preName}-tabBar{
+  background-color:$color-bg2;
+  @include FineBorder(bottom);
+  //display:flex;
+  flex-wrap:nowrap;
+  //兼容小程序scroll-view
+  white-space: nowrap;
+}
+
+.#{$preName}-tab-btn{
+  flex:1;
+  display:inline-block;
+  position:relative;
+  background-color:$color-bg2;
+  border:none;
+  text-align:center;
+  @include BaseFC();
+
+  border-radius:0;
+
+  &::after{
+    border:none;
+  }
+  &.active{
+    color:$color-primary;
+    &::before{
+      content:'';
+      position:absolute;
+      display:block;
+      bottom:-1px;
+      width:100%;
+      background:$color-primary;
+      height:3px;
+      left:0;
+    }
+  }
+}
+@each $key,$value in $tab-btn-params{
+  $height:nth($value,1);
+  $fontSize:nth($value,2);
+
+  .#{$preName}-tabBar-#{$key}{
+    height:$height;
+    .#{$preName}-tab-btn{
+      font-size:nth($value,2);
+      height:$height;
+      line-height:$height;
+     // min-width:nth($value,3);
+    }
+
+  }
+}

@@ -1,0 +1,36 @@
+.cm-sideRight{
+  @include Index(sideRightBg);
+  @include ModalBg();
+}
+
+
+.cm-sideRight-content{
+  position:absolute;
+  top:0;
+  right:0;
+  height:100%;
+  @include Index(sideRightContent);
+  @include An_node();
+  background-color:$color-bg2;
+  width:$sideRight-w;
+
+}
+.cm-sideRight-body{
+  padding:$sideRight-body-padding;
+  overflow-y:auto;
+}
+.cm-sideRight-bottom{
+  padding:$sideRight-bottom-padding;
+  @include CmShadow(1);
+}
+.cm-sideRight-header{
+  padding:10px;
+
+}
+.cm-side-content{
+  position:absolute;
+  top:$app-header-h;
+  right:0;
+  width:$sideRight-w;
+  background:$color-wm0;
+}

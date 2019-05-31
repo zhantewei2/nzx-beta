@@ -1,0 +1,27 @@
+.#{$preName}-filtrate-bar{
+  z-index:map-get($index,filtrateBar);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+}
+.#{$preName}-filtrate-bg{
+  @include ModalBg();
+  background-color:transparent;
+  z-index:map-get($index,filtrateBg);
+}
+.#{$preName}-filtrate-content{
+  position:absolute;
+  top:$search-head-h;
+  z-index:map-get($index,filtrateContent);
+  overflow-y:auto;
+  width:100%;
+  max-height:calc(100% - #{$search-head-h});
+
+}
+.#{$preName}-filtrate-bottom{
+  @include FineBorder(top);
+}
+.#{$preName}-filtrate-search-content{
+  overflow-y:scroll;
+}

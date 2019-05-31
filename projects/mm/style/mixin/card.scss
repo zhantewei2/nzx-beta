@@ -1,0 +1,8 @@
+@mixin BaseCard{
+  border-radius:$card-radius;
+  display:block;
+  @include mixSpace(margin,15px,y);
+  padding:$card-padding;
+  position:relative;
+
+}

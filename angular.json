@@ -27,7 +27,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "projects/mm/style/main.scss"
             ],
             "scripts": []
           },
@@ -127,6 +128,41 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "mm": {
+      "root": "projects/mm",
+      "sourceRoot": "projects/mm/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mm/tsconfig.lib.json",
+            "project": "projects/mm/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mm/src/test.ts",
+            "tsConfig": "projects/mm/tsconfig.spec.json",
+            "karmaConfig": "projects/mm/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mm/tsconfig.lib.json",
+              "projects/mm/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

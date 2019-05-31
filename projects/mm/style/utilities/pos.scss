@@ -1,0 +1,6 @@
+@each $key,$value in $vertical-pos{
+  .v-#{$key}{
+    vertical-align: $value
+  }
+}
+

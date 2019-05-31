@@ -1,0 +1,21 @@
+@mixin WMbg($isVertical:false){
+  color:white;
+  &>i{
+    color:white;
+  }
+  background:if($isVertical,$color-wm-v,$color-wm);
+}
+
+@mixin WMtext{
+  background:ColorWm();
+  color:transparent;
+  //font-weight:bold;
+  -webkit-background-clip:text;
+}
+@mixin WMoutline{
+  border-radius:0 !important;
+  border:1px solid transparent;
+  background:white;
+  color:$font-secondary-color;
+  border-image:$color-wm 10%;
+}

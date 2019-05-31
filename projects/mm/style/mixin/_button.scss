@@ -1,0 +1,107 @@
+
+
+
+@mixin BG($key,$opacity:null){
+    @if $key==wm{
+        @include WMbg();
+    }
+    @else{
+        $value:map-get($colors-all,$key);
+        @include yiq-contrasted(if($opacity,rgba($value,$opacity),$value));
+    }
+}
+
+@mixin WMRadius($radius:$wm-radius){
+    border-radius:$radius;
+}
+
+@mixin Disabled($key:null,$bgColor:null,$borderKey:null){
+    
+    $value:$bgColor;
+    @if $key {
+        $value:map-get($colors-all,$key);
+    }
+    &[disabled],&.disabled{
+        $disabledColor:$color-disabled;
+        @if $value and $value != wm{
+            background-color:mix($value,white);
+            color:yiq-contrast-color($value,$disabledColor,white);
+        }
+        @else{
+            color:$disabledColor !important;
+        }
+
+        @if $borderKey{
+            $borderColor:rgba(map-get($colors-all,$borderKey),.4);
+            border-color:$borderColor;
+            color:$borderColor;
+        }
+    }
+
+    
+}
+
+//Ripple
+@mixin RippleOneBg($color){
+    &.rippleActive::after{
+        background-color:mix($color,white) !important;
+    }
+    .cm-ripple-one{
+      background-color:$color;
+    }
+}
+@mixin ButtonRippleSize($size:md){
+    .cm-ripple-one{
+        font-size:map-get($btn-ripple-size,$size);
+    }
+}
+@mixin ButtonRipple($size:md){
+    .cm-ripple-one{
+        animation-duration: .5s;
+    }
+    @include ButtonRippleSize();
+}
+@mixin LightRipple(){
+    &.active{
+      background-color:white;
+    }
+    .cm-ripple-one{
+      background-color:white;
+    }
+  }
+
+@mixin BgRipple($key:null,$reverse:null){
+    $value:map-get($colors-all,$key);    
+    @if $value{
+        $isLight:yiq-is-light($value);
+        @if $reverse {
+            $isLight:not $isLight;
+        }
+        @if not $isLight{
+            @include LightRipple();   
+       }
+    }
+    
+}
+@mixin BtnActive{
+    background:$color-light-border;
+}
+
+@mixin RedefineOutlineRadius($radius){
+    &::before{
+        @include Radius($radius*2.5);
+    }
+    .fineBorder{
+        @include Radius($radius)
+    }
+}
+
+@mixin CircleBtn($len){
+  overflow:hidden;
+  text-align:center;
+  line-height:$len;
+  height:$len;
+  width:$len;
+  border-radius:50%;
+  transition:background .3s ease-out;
+}

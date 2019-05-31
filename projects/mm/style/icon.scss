@@ -1,0 +1,18 @@
+@each $key,$value in $icon-font{
+  .fa-#{$key}{
+    font-size:$value;
+  }
+}
+.cm-tabBar-icon{
+  width:21px;
+  height:21px;
+  margin-bottom:2px;
+}
+.icon-inner{
+  vertical-align: text-bottom;
+}
+.icon-load{
+  color:$color-gain;
+  font-size:24px;
+  animation: An_Circle 1.5s linear infinite;
+}

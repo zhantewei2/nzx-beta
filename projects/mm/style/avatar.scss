@@ -1,0 +1,88 @@
+%base-bg-image{
+  background-size:cover;
+  background-position:center;
+  background-color:$color-light2;
+  display:inline-block;
+}
+
+%avatar-base{
+  background-color:$color-light2;
+  border-radius:50%;
+  display:inline-block;
+  background-size:cover;
+  background-position:center;
+}
+
+//avatar图片为空时，返回图标
+.cm-none-avatar{
+  position:relative;
+  i{
+    @include Abs-center();
+    color:$color-font2;
+  }
+}
+@each $key,$value in $avatar-various{
+  $name:if($key==default,cm-avatar,cm-avatar-#{$key});
+  $len:map-get($value,len);
+  $fontSize:map-get($value,font);
+
+  .#{$name}{
+    @extend %avatar-base;
+    width:$len;
+    height:$len;
+    i{
+      font-size:$fontSize;
+    }
+  }
+}
+.cm2-avatar-wrapper-min{
+  margin-right:1rem;
+  display:inline-block;
+  width:55px;
+  text-align:center;
+}
+.cm2-avatar-name-min{
+  text-align:center;
+  font-size:12px;
+  color:$color-muted2;
+  transform:scale(.9,.9);
+  line-height:1;
+}
+.cm-avatar-name{
+  font-size:$avatar-name-size;
+}
+//avatar-list
+
+@function getAList($key){
+  @return map-get($a-list,$key);
+  @return map-get($a-list,$key);
+}
+.ca-list-avatar-content{
+  .cm-avatar{
+    margin:getAList(avatar-margin);
+  }
+}
+.ca-list-body{
+  padding:getAList(body-p);
+  color:getAList(body-color)
+}
+.ca-list{
+  @extend .cm-fine-bottom2;
+  padding:getAList(padding);
+  .ca-list-header{
+    @include Flex($self:center,$content:space-between);
+
+  }
+  .ca-list-avatar-content{
+    &>*{
+      vertical-align: middle;
+    }
+  }
+
+  .ca-list-comment{
+    padding:10px 0;
+    margin-left:58px;
+    color:$color-font2;
+  }
+}
+

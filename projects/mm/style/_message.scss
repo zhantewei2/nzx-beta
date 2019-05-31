@@ -1,0 +1,32 @@
+.cm-message{
+  position:fixed;
+  bottom:50px;
+  left:15%;
+  width:70%;
+  z-index:map-get($index,message);
+  //color:white;
+
+}
+.cm-message-wrapper{
+  @include Radius($wm-radius*3);
+  @include MessageShadow();
+  padding:7px 12px;
+  min-width:100px;
+  text-align:center;
+}
+.cm-message-primary{
+  background-image:$color-wm;
+
+}
+.cm-message-warn{
+  color:$color-bg2;
+  background-image:LinearPure(map-get($colors-material,warn));
+}
+.cm-message-success{
+  color:$color-bg2;
+  background-image:LinearPure(map-get($colors,success));
+}
+.cm-message-default{
+  background:rgba(black,.75);
+  color:white;
+}

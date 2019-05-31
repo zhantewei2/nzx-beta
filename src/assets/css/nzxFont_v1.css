@@ -1,0 +1,355 @@
+@font-face {
+  font-family: "nzxFont_v1";
+  font-style: normal;
+  font-weight: 400;
+  font-display: auto;
+  
+  src: url("../font/nzxFont_v1.woff2") format("woff2"), url("../font/nzxFont_v1.woff") format("woff");
+}
+
+.fa {
+  display: inline-block;
+  font-family: "nzxFont_v1";
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.fa-lg {
+  font-size: 1.33333em;
+  line-height: 0.75em;
+  vertical-align: -0.0667em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-border {
+  border: solid 0.08em #eee;
+  border-radius: 0.1em;
+  padding: 0.2em 0.25em 0.15em;
+}
+
+.fa-pull-left {
+  float: left;
+}
+
+.fa-pull-right {
+  float: right;
+}
+
+.fa.fa-pull-left {
+  margin-right: 0.3em;
+}
+
+.fa.fa-pull-right {
+  margin-left: 0.3em;
+}
+
+
+.fa-activity::before {
+  content: "\ea01";
+}
+
+.fa-activity2::before {
+  content: "\ea02";
+}
+
+.fa-add::before {
+  content: "\ea03";
+}
+
+.fa-agree::before {
+  content: "\ea04";
+}
+
+.fa-all-comment::before {
+  content: "\ea05";
+}
+
+.fa-back::before {
+  content: "\ea06";
+}
+
+.fa-back2::before {
+  content: "\ea07";
+}
+
+.fa-back_Android::before {
+  content: "\ea08";
+}
+
+.fa-camera::before {
+  content: "\ea09";
+}
+
+.fa-car::before {
+  content: "\ea0a";
+}
+
+.fa-car-o::before {
+  content: "\ea0b";
+}
+
+.fa-city::before {
+  content: "\ea0c";
+}
+
+.fa-city2::before {
+  content: "\ea0d";
+}
+
+.fa-close::before {
+  content: "\ea0e";
+}
+
+.fa-close-border::before {
+  content: "\ea0f";
+}
+
+.fa-comment::before {
+  content: "\ea10";
+}
+
+.fa-connect::before {
+  content: "\ea11";
+}
+
+.fa-dianzan::before {
+  content: "\ea12";
+}
+
+.fa-done::before {
+  content: "\ea13";
+}
+
+.fa-edit::before {
+  content: "\ea14";
+}
+
+.fa-edit1::before {
+  content: "\ea15";
+}
+
+.fa-edit2::before {
+  content: "\ea16";
+}
+
+.fa-edit3::before {
+  content: "\ea17";
+}
+
+.fa-error2::before {
+  content: "\ea18";
+}
+
+.fa-evalute::before {
+  content: "\ea19";
+}
+
+.fa-fatie::before {
+  content: "\ea1a";
+}
+
+.fa-feed::before {
+  content: "\ea1b";
+}
+
+.fa-female::before {
+  content: "\ea1c";
+}
+
+.fa-find::before {
+  content: "\ea1d";
+}
+
+.fa-find-o::before {
+  content: "\ea1e";
+}
+
+.fa-gift::before {
+  content: "\ea1f";
+}
+
+.fa-head::before {
+  content: "\ea20";
+}
+
+.fa-home::before {
+  content: "\ea21";
+}
+
+.fa-i-success::before {
+  content: "\ea22";
+}
+
+.fa-left::before {
+  content: "\ea23";
+}
+
+.fa-loading::before {
+  content: "\ea24";
+}
+
+.fa-loadm::before {
+  content: "\ea25";
+}
+
+.fa-location::before {
+  content: "\ea26";
+}
+
+.fa-logo::before {
+  content: "\ea27";
+}
+
+.fa-male::before {
+  content: "\ea28";
+}
+
+.fa-message2::before {
+  content: "\ea29";
+}
+
+.fa-more::before {
+  content: "\ea2a";
+}
+
+.fa-people::before {
+  content: "\ea2b";
+}
+
+.fa-people-o::before {
+  content: "\ea2c";
+}
+
+.fa-person::before {
+  content: "\ea2d";
+}
+
+.fa-person-o::before {
+  content: "\ea2e";
+}
+
+.fa-phone::before {
+  content: "\ea2f";
+}
+
+.fa-phone-1::before {
+  content: "\ea30";
+}
+
+.fa-pinglun::before {
+  content: "\ea31";
+}
+
+.fa-plus::before {
+  content: "\ea32";
+}
+
+.fa-publish::before {
+  content: "\ea33";
+}
+
+.fa-right::before {
+  content: "\ea34";
+}
+
+.fa-search::before {
+  content: "\ea35";
+}
+
+.fa-search-key::before {
+  content: "\ea36";
+}
+
+.fa-see::before {
+  content: "\ea37";
+}
+
+.fa-setting::before {
+  content: "\ea38";
+}
+
+.fa-share2::before {
+  content: "\ea39";
+}
+
+.fa-shop::before {
+  content: "\ea3a";
+}
+
+.fa-shop-o::before {
+  content: "\ea3b";
+}
+
+.fa-signature::before {
+  content: "\ea3c";
+}
+
+.fa-suo::before {
+  content: "\ea3d";
+}
+
+.fa-trash::before {
+  content: "\ea3e";
+}
+
+.fa-warn::before {
+  content: "\ea3f";
+}
+

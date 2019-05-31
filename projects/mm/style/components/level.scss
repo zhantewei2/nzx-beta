@@ -1,0 +1,22 @@
+%baseBlock{
+  @include Full();
+  position:absolute;
+  top:0;
+  left:0;
+  background-color:$color-bg;
+}
+
+.#{$preName}-empty-block{
+  @extend %baseBlock;
+  z-index:map-get($index,emptyBlock)
+
+}
+.#{$preName}-load-block{
+  @extend %baseBlock;
+  background-color:transparent;
+  z-index:map-get($index,loadBlock)
+}
+.#{$preName}-error-block{
+  @extend %baseBlock;
+  z-index:map-get($index,errBlock)
+}

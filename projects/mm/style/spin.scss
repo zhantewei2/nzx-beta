@@ -1,0 +1,58 @@
+.cm-spin-bg{
+  @include ABS(t,l,0);
+  @include Full();
+  z-index:-1;
+  background:rgba(black,.2);
+  filter:blur(2px);
+}
+@keyframes CMZSPIN{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+
+.cm-z-spin-run{
+  .cm-z-spin{
+    animation:CMZSPIN .5s ease infinite;
+    animation-direction:alternate;
+  }
+}
+$main-color:map-get($colors,p);
+.cm-z-spin-render{
+  .cm-z-spin{
+    background-color:rgba($main-color,.3) !important;
+    animation:CmFadeIn .3s ease;
+  }
+}
+.cm-z-spin-container{
+  $spin-len:$z-spin-r*2+$z-spin-r0;
+  font-size:$z-spin-base-size;
+  position:relative;
+  height:$spin-len;
+  width:$spin-len;
+}
+.cm-z-spin{
+  position:absolute;
+  height:$z-spin-r0;
+  width:$z-spin-r0;
+  background:lighten(map-get($colors,p),10%);
+  border-radius:50%;
+  font-size:inherit;
+}
+
+@for $i from 0 through 9{
+  .cm-z-spin-run{
+    .cm-z-spin-#{$i}{
+      animation-delay:#{$i/10}s;
+    }
+  }
+}
+
+.cm-spin-icon{
+  height:50px;
+  width:50px;
+}
+.cm-message-icon{
+  height:100px;
+  width:100px;
+}

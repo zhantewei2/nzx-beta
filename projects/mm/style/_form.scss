@@ -1,0 +1,129 @@
+@function getForm($v){
+    @return map-get($form,$v);
+}
+@function getTheme($key,$pos){
+    @return nth(map-get($radio-theme,$key),$pos);
+}
+@mixin RadioRadius($radius){
+    border-radius:$radius;
+    &::after{
+        border-radius:$radius;
+    }
+}
+%base-radio{
+    user-select: none;
+    height:getForm(h);
+    width:getForm(w);
+    line-height:getForm(h);
+    display:inline-block;
+    position:relative;
+    z-index:1;
+    vertical-align: middle;
+    border:1px solid transparent;
+    box-sizing:content-box;
+    font-size:12px;
+    &::after{
+        content:'';
+        z-index:-1;;
+        @include BaseAbs();
+        @include Full();
+        box-shadow:0 0 12px $color-muted2;
+        opacity:0;
+    }
+}
+.cm-radio-wrapper{
+    @extend %base-radio;
+    text-align:center;
+    @include RadioRadius(50%);
+    &::before{
+        content:'';
+        @include FineAllBorder2($radius:50%,$bgColor:transparent);
+    }
+}
+.cm-check-wrapper{
+    @extend %base-radio;
+    text-align:center;
+    @include RadioRadius($wm-radius);
+    &::before{
+        content:'';
+        @include FineAllBorder2($radius:$wm-radius,$bgColor:transparent);
+    }
+
+    i{
+        font-size:getForm(checkSize)
+    }
+}
+%cm-radio{
+    @include CM-radio(getForm(radioCenter),getForm(w),getForm(h));
+
+}
+.cm-radio-center{
+    @extend %cm-radio;
+ }
+
+.cm-slider-center{
+    @include CM-radio(getForm(sliderCenter),getForm(w),getForm(h));
+    @include An_node();
+    border:1px solid transparent;
+    z-index:2;
+    display:block;
+    &.active{
+        transform:translateX(getForm(len)/2);
+    }
+}
+.cm-slider-bg{
+    @include BaseAbs();
+    @include Full();
+    border-radius:getForm(h)/2;
+}
+.cm-slider-wrapper{
+    @extend %base-radio;
+    width:getForm(len);
+    @include RadioRadius(getForm(h)/2);
+}
+
+@for $i from 1 through 3 {
+    $name:getTheme(name,$i);
+    $bg:getTheme(bg,$i);
+    $color:getTheme(color,$i);
+    $borderColor:getTheme(borderColor,$i);
+    $thumbBorder:getTheme(thumbBorder,$i);
+    $thumbColor:getTheme(thumbColor,$i);
+    $slideBgKey:getTheme(slideBg,$i);
+    $thumbB:getTheme(thumbB,$i);
+    $thumbBActive:getTheme(thumbBActive,$i);
+    $beforeBorder:getTheme(beforeBorder,$i);
+    .cm-radio-theme-#{$name}{
+        background-color:$bg;
+        color:$color;
+        border-color:$borderColor;
+        &::before{
+            border-color:$beforeBorder;
+        }
+        .cm-radio-center{
+            background-color:$color;
+        }
+        .cm-slider-bg{
+            @include BG($slideBgKey);
+        }
+        .cm-slider-center{
+            background-color:$thumbColor;
+            border-color:$thumbB;
+            &.active{
+                border-color:$thumbBActive;
+                background-color:$thumbBorder;
+            }
+        }
+    }
+}
+
+@keyframes CmFormEffect{
+    0%{opacity:0}
+    50%{opacity:1}
+    100%{opacity:0}
+}
+.cm-form-effect{
+    &::after{
+        animation:CmFormEffect .3s linear;
+    }
+}

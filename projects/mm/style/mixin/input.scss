@@ -1,0 +1,13 @@
+@mixin BaseInput(){
+  border:none;
+  width:100%;
+  display:block;
+  &:focus{
+    outline:none;
+  }
+}
+
+@mixin InputFocus(){
+  @include CmInputShadow($color-primary);
+  border-color:rgba($color-primary,.5);
+}

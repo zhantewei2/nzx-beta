@@ -1,0 +1,88 @@
+$step-badge-len:25px;
+$step-title-w:50px;
+$step-min-height:100px;
+$step-line-white:5px;
+
+$step-h:50px;
+$step-bg:white;
+$step-line-color:$color-primary;
+$step-line-width:1px;
+$step-color:$color-primary;
+$step-label-l:38px;
+$step-label-p:10px;
+$step-content-p:5px 10px;
+%step-holder{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  width:100%;
+  background:$step-bg;
+}
+
+
+.cm2-step-hollow{
+  height:5px;
+  width:5px;
+  border:1px solid red;
+  display:inline-block;
+  border-radius:50%;
+}
+.cm2-step-vertical{
+  z-index:1;
+  position:relative;
+  .cm2-step-content{
+    display:inline-block;
+    padding:$step-content-p;
+  }
+  .cm2-step-circle{
+    background:mix($step-color,white,10%);
+    width:$step-label-l;
+    height:$step-label-l;
+    text-align:center;
+    border-radius:50%;
+    i{
+      color:$step-color;
+    }
+    &.active{
+      background:$step-color;
+      i{
+        color:white;
+      }
+    }
+    display:inline-block;
+    padding:5px;
+  }
+  .item{
+    padding:$step-label-p;
+    position:relative;
+    &:first-of-type::before{
+      @extend %step-holder;
+      top:0;
+      left:0;
+      height:50%;
+    }
+    &:last-of-type::before{
+      @extend %step-holder;
+      bottom:0;
+      left:0;
+      height:50%;
+    }
+  }
+    margin:10px;
+    &::before{
+      content:'';
+      z-index:-1;
+      position:absolute;
+      left:$step-label-p+$step-label-l/2-$step-line-width;
+      top:0;
+      height:100%;
+      width:0;
+      border-right:1px dotted $step-color;
+      //background:$step-line-color;
+    }
+  &.alone{
+    &::before{
+      display:none;
+    }
+  }
+}

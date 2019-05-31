@@ -1,0 +1,36 @@
+%cm-pure-card{
+  @include Radius(8px);
+  background:$color-bg2;
+  
+}
+.cm-list-card{
+  @extend %cm-pure-card;
+  @include CmBrandShadow();
+}
+.cm-pure-card{
+  @extend %cm-pure-card;
+  padding: 5px 10px;
+}
+.wm-list-card{
+  @include BaseCard();
+  // @include FineAllBorder($radius:$card-radius);
+  @include CmBrandShadow();
+  background:$color-bg2;
+}
+
+.cm-radius-border{
+  @include FineAllBorder($radius:$wm-radius);
+
+}
+.cm-text-card{
+  background-color:$color-light;
+  font-size:$sm-font-size;
+  padding:$card-text-padding;
+  @include Radius($wm-radius);
+}
+.wm-light-card{
+  padding:10px;
+  background-color:$color-bg2;
+
+  @include FineBorder($pos:bottom,$whiteBetween:true,$color:$color-gain);
+}

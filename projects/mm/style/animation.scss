@@ -1,0 +1,137 @@
+.cm-use-transform{
+  transition:transform .2s ease-out,opacity .2s ease-out !important;
+}
+
+$turn-collection:(
+  center:0,
+  right:100%,
+  left:-100%,
+  top:0
+);
+@each $key,$value in $turn-collection{
+  @keyframes Turn-#{$key}{
+    from{}
+    to{transform:if($key==top,translate3d(0,$value,0),translate3d($value,0,0))}
+  }
+  .cm-component-turn-#{$key}{
+    animation:Turn-#{$key} .3s ease-out;
+    animation-fill-mode: forwards;
+  }
+}
+
+
+@keyframes an_pop{
+  0%{
+    transform:scale(0.5,0.5);
+    opacity:0;
+  }
+  80%{
+    transform:scale(1.1,1.1);
+  }
+  100%{
+    transform:scale(1,1)
+  }
+}
+
+@keyframes an_fadeIn{
+  from{opacity:0}
+  to{}
+}
+@keyframes an_fadeOut{
+  from{}
+  to{opacity:0}
+}
+@keyframes an_topDown{
+  from{transform:translate3d(0,-100%,0)}
+  to{}
+}
+@keyframes an_downTop{
+  from{transform:translate3d(0,100%,0)}
+  to{}
+}
+@keyframes an_LeftEnter{
+  from{transform:translate3d(-100%,0,0)}
+  to{}
+}
+@keyframes an_BottomEnter{
+  from{transform:translate3d(0,100%,0);opacity:0}
+  to{}
+}
+@keyframes an_LeftEnter2 {
+  0%{transform:translate3d(-100%,0,0);opacity:0}
+  75%{transform:translate3d(10%,0,0);opacity:1}
+  100%{}
+}
+@keyframes an_RightEnter2{
+  0%{transform:translate3d(10%,0,0);opacity:0}
+  80%{transform:translate3d(-2%,0,0);opacity:1}
+  100%{}
+}
+@keyframes an_RightEnter{
+  from{transform:translate3d(100%,0,0)}
+  to{}
+}
+@keyframes an_popMin{
+  from {transform: scale3d(.9,.9,1)}
+  to{}
+}
+@keyframes an_RightLeave {
+  from{}
+  to{transform:translate3d(-100%,0,0);opacity:0}
+}
+@keyframes an_RightLeave2{
+  from{}
+  to{transform:translate3d(100%,0,0);opacity:0}
+}
+@keyframes an_modal{
+  from {transform:translate3d(0,50px,0) scale(.8,.8) perspective(1000px)}
+  to{}
+}
+@keyframes an_shake{
+  0%{}
+  50%{transform:scale(.9,.9)}
+  100%{}
+}
+@keyframes an_enter{
+  0%{transform:scale(1.2,1.2);opacity:0}
+  100%{transform:scale(1,1);opacity:1}
+}
+@keyframes an_diffuse{
+  0%{transform:scaleX(0)}
+100%{transform:scaleX(1)}
+}
+
+.cm-an-delay-enter{
+  opacity:0;
+  animation:an_enter .3s ease .3s;
+  animation-fill-mode: forwards;
+}
+@include UseAn(an_shake);
+@include UseAn(an_modal);
+@include UseAn(an_popMin,$bezier-quick);
+@include UseAn(an_LeftEnter,$bezier-quick);
+@include UseAn(an_RightEnter,$bezier-quick);
+@include UseAn(an_BottomEnter);
+@include UseAn(an_RightEnter2,$bezier-quick);
+@include UseAn(an_topDown,$bezier-quick);
+@include UseAn(an_downTop,$bezier-quick);
+@include UseAn(an_pop);
+@include UseAn(an_fadeIn);
+@include LeaveAn(an_fadeOut);
+@include LeaveAn(an_RightLeave);
+@include LeaveAn(an_RightLeave2);
+.cm-right-toggle{
+  transform:translate3d(100%,0,0);
+}
+.cm-top-toggle{
+  transform:translate3d(0,-100%,0);
+}
+
+@keyframes An_Circle{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
+}
+.cm-an-circle{
+  display:inline-block;
+  animation:An_Circle 2s linear infinite;
+}

@@ -1,0 +1,24 @@
+@mixin webkitScrollBar($preName){
+  .#{$preName}::-webkit-scrollbar{
+    display:block;
+    background-color:$color-gain;
+    width:.6rem;
+    height:.5rem;
+    border:1px solid $color-gain;
+  }
+  .#{$preName}::-webkit-scrollbar-thumb{
+    background-color:$color-muted;
+    border-radius:$base-radius;
+    &:hover{
+      background:lighten($color-muted,10%);
+    }
+  }
+}
+
+@mixin NoScrollBar{
+  ::-webkit-scrollbar{
+    width:0;
+    height:0;
+    background-color:transparent;
+  }
+}

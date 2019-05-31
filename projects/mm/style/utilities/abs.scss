@@ -1,0 +1,21 @@
+@include ABS(t,l,0);
+@include ABS(t,r,0);
+@include ABS(b,l,0);
+@include ABS(b,r,0);
+@include ABS(t,l,5px,5);
+@include ABS(t,r,5px,5);
+@include ABS(b,l,5px,5);
+@include ABS(b,r,5px,5);
+
+.abs-center{
+  @include Abs-center();
+}
+.abs-center-top{
+  @include Abs-center($top:25%);
+}
+.abs-cl{
+  @extend .abs;
+  top:50%;
+  left:0;
+  transform:translateY(-50%);
+}

@@ -1,0 +1,45 @@
+.table{
+  @include Table();
+  @include Radius();
+}
+.table-mobile{
+  @include MobileTable();
+}
+.table-bottom{
+  & tbody tr{
+    border-bottom:1px solid $color-light-border;
+    &:last-of-type{
+      border:none;
+    }
+  }
+}
+.table-stripe{
+  @include Stripe(tbody tr);
+}
+.table-hover{
+  & tr{
+    @include An_node();
+  }
+  &>tr:hover,&>tbody>tr:hover{
+    background-color:red;
+  }
+}
+.table-light{
+  @include TableLight();
+}
+.table-fixed{
+  overflow:auto;
+}
+.table-border{
+  @include BaseTable();
+  min-width:100%;
+  & td{
+    border:1px solid $color-underline;
+    text-align:center;
+  }
+}
+.table-mobile-border{
+  border:1px solid $color-gain;
+  border-radius:15px;
+}
+

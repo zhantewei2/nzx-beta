@@ -1,0 +1,6 @@
+@mixin CM-radio($l,$w,$h){
+    height:$l;
+    width:$l;
+    border-radius:50%;
+    @include AbsCenter2($l,$l,$w,$h);  
+}

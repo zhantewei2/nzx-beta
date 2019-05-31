@@ -1,0 +1,14 @@
+
+
+
+@function LinearPure($color){
+  @return linear-gradient(to right,$color,darken($color,10%));
+}
+
+@function RippleColor($color){
+  @return rgba($color,.1);
+}
+
+@function LightenColor($color){
+  @return rgba($color,.1);
+}

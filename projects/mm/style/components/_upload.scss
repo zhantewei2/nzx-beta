@@ -1,0 +1,66 @@
+%ztw-upload-base{
+  height:100px;
+  width:100px;
+  margin:$upload-margin;
+  background-color:$color-light2;
+  @include noneTap();
+  @include Radius($wm-radius);
+}
+.cm2-upload-img{
+  @extend %ztw-upload-base;
+  @include Base-background();
+  user-select: none;
+}
+.ztw-upload{
+  @extend %ztw-upload-base;
+  border:1px dashed $color-gain;
+
+
+  position:relative;
+  &::not[disabled]:hover{
+    background:$color-underline;
+  }
+  &[disabled]{
+
+  }
+}
+.ztw-upload-input{
+  @include BaseInput();
+  @include BaseAbs();
+  height:100%;
+  visibility:hidden;
+}
+.ztw-upload-img{
+  @include BaseAbs();
+  @include Full();
+}
+.ztw-full-img{
+  width:100%;
+}
+
+.ztw-full-screen{
+  position:fixed;
+  @include Full();
+  top:0;
+  left:0;
+  background:black;
+  z-index:map-get($index,fullScreen);
+}
+.ztw-full-closeIcon{
+  padding:5px;
+  border-radius:50%;
+  background:rgba($color-bg,.2);
+  line-height:1;
+}
+.ztw-upload-close{
+  position:absolute;
+  border-radius:50%;
+  top:-8px;
+  right:-8px;
+  width:25px;
+  height:25px;
+  color:$color-bg;
+  background:rgba($color-muted,.2);
+  //@include WMbg(true);
+  @include CmShadow();
+}

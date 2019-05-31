@@ -1,0 +1,5 @@
+@each $key,$value in $cm-an-rotates{
+  .rotate#{$key}{
+    transform:#{rotate($value)};
+  }
+}

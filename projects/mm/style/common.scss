@@ -1,0 +1,198 @@
+*{
+  box-sizing:border-box;
+
+}
+html{
+
+  word-break: break-all;
+  font-size:$base-font-size;
+  color:$font-secondary-color;
+  margin:0;
+  overflow-x:hidden;
+}
+body,kbd{
+  font-family: $base-font !important;
+ 
+}
+body{
+  @include BaseAbs();
+  @include Full();
+  margin:0;
+  line-height:$base-line-height;
+  overflow-y:auto;
+  @include boundBottom();
+  height:calc(100% - constant(safe-area-inset-bottom));
+  height:calc(100% - env(safe-area-inset-bottom));
+}
+.cm-safe-body{
+  //top:constant(safe-area-inset-top);
+  //top:env(safe-area-inset-top);
+  @include boundBottom();
+  height:calc(100% - constant(safe-area-inset-bottom));
+  height:calc(100% - env(safe-area-inset-bottom));
+}
+
+.fa{
+  vertical-align: bottom;
+  font-size:18px;
+  color:$color-muted2;
+}
+.none-tap{
+  @include noneTap();
+}
+.bodyFix,.appFix{
+  position:fixed;
+  overflow-x:hidden;
+}
+.no-p{
+  padding:0 !important;
+}
+small{
+  color:$color-muted;
+}
+
+.cm-line{
+  min-height:30px;
+  display:flex;
+  align-items: center;
+}
+
+.mat-row, .mat-header-row {
+  background: white;
+  min-width: 1200px;
+}
+.cm-light-bottom,.cm-fine-bottom{
+  @include FineBorder(bottom)
+}
+.cm-fine-bottom-shadow{
+  @include FineShadow();
+}
+.cm-fine-top{
+  @include FineBorder(top)
+}
+.cm-fine-border{
+  @include FineAllBorder();
+}
+.cm-fine-toggle{
+  @include FineAllBorder($toggle:true);
+}
+
+.cm-wm-bottom{
+  @include FineBorder($pos:bottom,$imageColor:$color-wm);
+}
+.cm-fine-bottom2{
+  @include FineBorder(bottom,$color-light-border);
+}
+.cm-fine-vertical{
+  width:1px;
+  background:$color-gain;
+  transform:scaleX(.4);
+}
+
+.cm-content-font{
+  font-family: $content-font;
+}
+.over-y{
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+.cm-line-brand{
+  @include Margin(8px,x);
+  @include WMbg();
+  width:2px;
+  border-radius:2px;
+  height:15px;
+}
+.cm-x-container{
+  display:flex;
+  padding:$base-size 0;
+  white-space: nowrap;
+  overflow-x:auto;
+  &::-webkit-scrollbar{
+    height:0;
+  }
+}
+.wm-line{
+  @include WMbg();
+  height:1px;
+}
+.fine-font{
+  line-height:1;
+}
+
+
+.cm-card-avatar{
+  $self-w:45px;
+  $self-h:47px;
+  $radius:3px;
+  width:$self-w;
+  height:$self-h;
+  border-radius:$radius;
+  img{
+    width:$self-w;
+    height:$self-h;
+    border-radius:$radius;
+    overflow:hidden;
+  }
+  @include FineAllBorder($radius:$radius);
+  .brand{
+    width:15px;
+    height:15px;
+  }
+}
+.cm-fixed-bottom-block{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  z-index:map-get($index,fixedBottom);
+  @include CmMessageShadow();
+}
+.l-2{
+  letter-spacing: 2em;
+}
+.l-3{
+  letter-spacing:0.5em;
+}
+.black{
+  color:black;
+}
+.cm-blur{
+  filter:blur(#{$blur});
+}
+
+.cm-bgScale{
+  overflow:hidden;
+  .cm-app-container{
+    transform:scale(1.04,1.04) translate3d(0,0,0);
+  }
+}
+.cm-bgBlur{
+  .cm-app-container{
+    filter:blur(2px);
+  }
+}
+
+.no-scrollBar{
+  &::-webkit-scrollbar{
+    height: 0;
+    width:0;
+  }
+}
+.no-select{
+  user-select:none;
+  -webkit-touch-callout:none;
+}
+.ios-scroll{
+  @include IOS_scroll();
+}
+%none-margin{
+   margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-end: 0;
+    margin-inline-start: 0;
+}
+.none-all{
+  @include noneTap();
+  user-select: none;
+}

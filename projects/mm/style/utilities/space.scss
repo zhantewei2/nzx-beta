@@ -1,0 +1,22 @@
+
+@mixin gen_space(){
+  $genSpace:(
+    m:margin,
+    p:padding
+  );
+  @each $abbrev,$full in $genSpace{
+    @for $i from 1 through getUti(size){
+      $useSize:$i*$base-size;
+      .#{$abbrev}-#{$i}{
+        @include mixSpace($full,$useSize)
+      }
+      @each $key,$value in $glob-pos{
+        .#{$abbrev}#{$key}-#{$i}{
+          @include mixSpace($full,$useSize,$value)
+        }
+      }
+    }
+  }
+}
+
+@include gen_space();

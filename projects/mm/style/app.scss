@@ -1,0 +1,58 @@
+@function getApp($key){
+  @return map-get($ztw-app,$key);
+}
+
+
+.cm2-header-deep{
+  color:white;
+  font-weight:bold;
+  background:$color-primary;
+  i{
+    color:white !important;
+  }
+  .cm-app-header-holder,.cm-app-header{
+    background:$color-primary;
+  }
+}
+.cm2-header-light{
+  background:white;
+  .cm-app-header-holder,.cm-app-header{
+    background:white;
+  }
+ }
+.cm2-horizontal-scroll-wrapper{
+  white-space: nowrap;
+  overflow:auto;
+  @include IOS_scroll();
+}
+.cm2-dsc{
+  color:$color-muted;
+  font-size:getApp(dscSize);
+}
+.cm2-dsc2{
+  color:gray;
+  font-size:getApp(dscSize);
+}
+.cm2-samp{
+ @extend .cm2-dsc;
+  transform:scale(.9,.9) translateX(-3px);
+}
+
+.cm2-article{
+  margin-top:20px;
+  margin-bottom:40px;
+}
+.cm2-page-err-block{
+  $size:getApp(errSize);
+  width:$size;
+  height:$size;
+  img{
+    width:$size;
+    height:$size;
+  }
+}
+.cm2-page-err-text{
+  color:rgba($color-primary,.6);
+  font-size:12px;
+  margin-top:15px;
+}

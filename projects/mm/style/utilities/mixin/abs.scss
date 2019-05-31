@@ -1,0 +1,20 @@
+.abs{
+  position:absolute;
+}
+@mixin ABS($pos1:t,$pos2:l,$value:0,$suffix:null){
+  $name1:map-get($abs-pos,$pos1);
+  $name2:map-get($abs-pos,$pos2);
+  $title:#{if($suffix,'.abs-#{$pos1}#{$pos2}-#{$suffix}','.abs-#{$pos1}#{$pos2}')};
+  #{$title}{
+    @extend .abs;
+    #{$name1}:$value;
+    #{$name2}:$value;
+  }
+}
+@mixin Abs($pos1,$pos2,$value:0){
+  position:absolute;
+  $name1:map-get($abs-pos,$pos1);
+  $name2:map-get($abs-pos,$pos2);
+  #{$name1}:$value;
+  #{$name2}:$value;
+}

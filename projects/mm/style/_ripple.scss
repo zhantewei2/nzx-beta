@@ -1,0 +1,58 @@
+$ripple-one-opacity:.2;
+$ripple-base-color:mix(white,black);
+
+@keyframes Ripple{
+  0%{transform:scale3d(0.5,0.5,0.5);opacity:0;}
+  30%{transform:scale3d(5,5,5);opacity:$ripple-one-opacity;}
+  100%{transform:scale3d(10,10,10);opacity:0}
+}
+@mixin RippleTransition(){
+  transition:background-color .4s ease;
+}
+
+.cm-ripple-container{
+  position:relative;
+  overflow:hidden;
+  // @include RippleTransition();
+  backface-visibility:hidden;
+  @include noneTap();
+
+  transform:translate3d(0,0,0);
+  //safari overflow hidden
+  //ionic webview中不能为透明黑色，安卓会出现纯黑色块。所以after调整为opacity:0.2；
+  $self-bg-color:lighten($ripple-base-color,35%);
+  &::after{
+    content:'';
+    z-index:1;
+    display:none;
+    @include Abs(t,l,0);
+    @include Full();
+    @extend .cm-an_fadeIn;
+    opacity:0.2;
+    background:$self-bg-color;
+  }
+  &.rippleActive{
+   &::after{
+     display:block;
+   }
+  }
+  &.rippleLeave{
+    &::after{
+      @extend .cm-an_fadeOut;
+    }
+  }
+
+}
+.cm-ripple-one{
+  width:1em;
+  height:1em;
+  position:absolute;
+  border-radius:50%;
+  background-color:$ripple-base-color;
+  transform:translate3d(-50%,-50%,0);
+  animation:Ripple .5s linear;
+  animation-fill-mode: forwards;
+}
+.cm-ripple-container.light{
+  @include LightRipple()
+}

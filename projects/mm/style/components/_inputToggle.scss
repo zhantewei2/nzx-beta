@@ -1,0 +1,31 @@
+$inputToggle-radius:1em;
+$inputToggle-height:1.6em;
+$inputToggle-padding:5px 10px;
+
+.cm-inputToggle {
+  display: inline-flex;
+  border-radius: $inputToggle-radius;
+  height: $inputToggle-height;
+  position: relative;
+  @include CmShadow();
+  font-size:16px;
+  background-color:map-get($colors-material,accent);
+  //background-color:lighten(gray,30%);
+}
+.cm-inputToggle-item{
+  flex:1;
+  line-height: $inputToggle-height;
+  padding:$inputToggle-padding;
+  color:$color-bg2;
+}
+.cm-inputToggle-bar{
+  transition:left $bezier-quick;
+  @include BaseAbs();
+  @include CmMatShadow();
+  background-image:linear-gradient(45deg,white,$color-underline);
+  border-radius:$inputToggle-radius;
+  height:$inputToggle-height;
+  border:1px solid $color-underline;
+  width:50%;
+
+}

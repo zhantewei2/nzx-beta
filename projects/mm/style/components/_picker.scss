@@ -1,0 +1,88 @@
+
+$picker-item-h:60px;
+$picker-item-h-sm:55px;
+$picker-min-w:90px;
+$picker-min-w-sm:65px;
+.cm-picker-title{
+  text-align:center;
+  color:$color-primary;
+  @include HeightCenter($picker-item-h);
+  &.sm{
+    font-size:12px;
+    font-weight:100;
+    //@include HeightCenter($picker-item-h-sm)
+  }
+}
+.cm-picker-title-content{
+
+  padding:0 10px;
+  @include FineBorder(bottom,$color-primary);
+}
+.cm-picker-container{
+  height:$picker-item-h*3;
+  min-width:$picker-min-w;
+  position:relative;
+  overflow:hidden;
+
+}
+.cm-picker-content{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+
+  li{
+    border-bottom:1px solid transparent;
+    list-style: none;
+    text-align:center;
+    font-size:14px;
+    @include HeightCenter($picker-item-h);
+    color:$font-secondary-color;
+   // @include An_node();
+    &.active{
+      font-size:16px;
+    }
+  }
+}
+
+@mixin blockH($height){
+  @each $key,$value in (top:0,show:1,bottom:2){
+    .cm-picker-#{$key}-block{
+      top:$value*$height;
+    }
+  }
+}
+%cm-picker-block{
+  position:absolute;
+  width:100%;
+  left:0;
+  height:$picker-item-h;
+}
+.cm-picker-show-block,.cm-picker-top-block,.cm-picker-bottom-block{
+ @extend %cm-picker-block;
+}
+.cm-picker-bottom-block,.cm-picker-top-block{
+  background-color:rgba(white,.8);
+}
+@include blockH($picker-item-h);
+
+
+.cm-picker-hidTop,.cm-picker-hidBottom{
+  height:$picker-item-h;
+}
+
+.cm-picker-container.sm{
+  min-width:$picker-min-w-sm;
+  height:$picker-item-h-sm*3;
+  li{
+    @include HeightCenter($picker-item-h-sm);
+  }
+  @include blockH($picker-item-h-sm);
+  %cm-picker-block{
+    height:$picker-item-h-sm;
+  }
+}
+.cm-picker-vertical{
+  @extend %fine-vertical;
+  background:$color-light-border;
+}

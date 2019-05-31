@@ -1,0 +1,63 @@
+$bottomsheet-radius:15px;
+$bottomsheet-mini-h:100px;
+
+.cm-bottom-sheet-bg{
+  @include ModalBg();
+  z-index:map-get($index,bottomSheetBg);
+}
+%cm-sheet-content{
+  background-color:$color-bg2;
+  position:absolute;
+  padding:10px;
+  left:0;
+  width:100%;
+  min-height:$bottomsheet-mini-h;
+}
+
+.cm-bottom-sheet-content{
+  @extend %cm-sheet-content;
+  border-radius:$bottomsheet-radius $bottomsheet-radius 0 0;
+  @include boundBottom();
+  .sheet-header{
+    margin-bottom:$base-size;
+  }
+  .close{
+    z-index:2;
+    position:absolute;
+    top:13px;
+    right:15px;
+    color:$color-gain;
+  }
+  .header{
+    text-align:center;
+    line-height:40px;
+  }
+}
+.cm-top-sheet-content{
+  @extend %cm-sheet-content;
+  border-radius:0 0 $bottomsheet-radius $bottomsheet-radius;
+  top:0;
+  display:flex;
+  flex-direction:column-reverse;
+  .sheet-header{
+    margin-top:$base-size;
+  }
+}
+
+
+.cm-hidden{
+  display:none !important;
+}
+.bottom-show{
+  animation:CmFadeIn .3s ease-in;
+  .cm-bottom-sheet-content{
+    animation:CmBottomEnter $bezier-time;
+  }
+}
+.bottom-closing{
+  @include Animation-end(CmFadeOut .3s ease-out);
+  .cm-bottom-sheet-content{
+    @include Animation-end(CmBottomLeave .3s ease-out);
+  }
+}
+

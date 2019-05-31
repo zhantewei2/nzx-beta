@@ -1,0 +1,28 @@
+@mixin BaseBadge($padding){
+  border-radius:$chip-radius;
+  padding:$padding;
+  font-size:12px;
+  display:inline-block;
+  margin-right:5px;
+  margin-left:5px;
+  color:$font-secondary-color;
+  text-align:center;
+  min-width:$chip-min-w;
+}
+%badge-close{
+  @include Abs(b,r,0-$badge-close-w/2);
+  transform:rotate(45deg);
+  width:$badge-close-w;
+  height:$badge-close-w;
+}
+@mixin BadgeClose($color){
+  @extend %badge-close;
+  background-color:$color;
+  color:yiq-contrast-color($color);
+
+}
+@mixin Circle($len,$radius:.6em){
+  width:$len;
+  height:$len;
+  border-radius:$radius;
+}

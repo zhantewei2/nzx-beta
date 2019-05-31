@@ -1,0 +1,35 @@
+
+.cm-menu-toggle{
+    display:inline-block;
+    width:$menu-toggle-w;
+    height:$menu-toggle-h;
+    margin:$base-size;
+    position:relative;
+    div{
+        height:1px;
+        background:$color-bg2;
+        width:100%;
+        position:absolute;
+        top:50%;
+        left:0;
+        @include An_node();
+        &:nth-of-type(1){
+            transform:translateY(0-$menu-margin-t);
+        }
+        &:nth-of-type(3){
+            transform:translateY($menu-margin-t)
+        }
+    }
+
+    &.close{
+        div:nth-of-type(1){
+            transform:rotate($menu-rotate);
+        }
+        div:nth-of-type(2){
+            opacity:0;
+        }
+        div:nth-of-type(3){
+            transform:rotate(0-$menu-rotate);
+        }
+    }
+}

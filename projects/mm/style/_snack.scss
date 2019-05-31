@@ -1,0 +1,18 @@
+.cm-snack-wrapper{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:map-get($index,snack);
+}
+
+.cm-snack{
+    padding:$snack-padding;
+    margin:$snack-margin;
+    border-radius:10px;
+    @include FineAllBorder($radius:10px,$bgColor:rgba($color-bg2,0.95));
+    @include CmBrandShadow();
+}
+.cm-snack-close{
+    padding:10px;
+}

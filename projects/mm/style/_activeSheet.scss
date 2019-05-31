@@ -1,0 +1,71 @@
+.#{$preName}-sheet-bg{
+    @include ModalBg($noneBg:true);
+    z-index:map-get($index,sheetBg);
+
+}
+@function sheetTheme($key,$pos){
+    @return nth(map-get($activeSheet-theme,$key),$pos);
+}
+%cm-sheet-wrapper{
+    @include Radius($wm-radius);
+    overflow:hidden;
+
+}
+.cm-sheet-content-wrapper{
+    @extend %cm-sheet-wrapper;
+}
+.cm-sheet-content-footer{
+    @extend %cm-sheet-wrapper;
+    margin-top:.5rem;
+    line-height:$cm-list-h;
+    letter-spacing: 1rem;
+    font-size:15px;
+    font-weight: bold;
+    color:$color-blue !important;
+}
+.cm-sheet-content{
+    position:fixed;
+    z-index:map-get($index,sheetContent);
+    width:$activeSheet-w;
+    left:(100% - $activeSheet-w)/2;
+    bottom:1rem;
+    bottom:calc(1rem + env(safe-area-inset-bottom));
+    // @include An_node();
+    // opacity:0;
+    // transform:translate3d(0,100%,0);
+    .z-list-item{
+        @include Padding($activeSheet-item-p,x);
+        i{
+            vertical-align: middle;
+        }
+    }
+    &.show{
+        // opacity:1;
+        // animation:CmBottomEnter $bezier-quick;
+        // transform:translate3d(0,0,0);
+    }
+    
+    .cm-sheet-body{
+        max-height:$activeSheet-body-h;
+        overflow-y:auto;
+    }
+    .cm-sheet-header{
+        line-height:$cm-list-h;
+        @include Padding($activeSheet-item-p,x);
+        text-align: center;
+        font-size:15px;
+    }
+    @for $i from 1 through 2{
+        $name:sheetTheme(name,$i);
+        $bg:sheetTheme(bg,$i );
+        &.#{$name}{
+            .cm-sheet-content-wrapper,.cm-sheet-content-footer{
+                @include BG($bg,.95);
+            }
+        }
+    }
+}
+.cm-sheet-placeholder{
+    width:20px;
+    display:inline-block;
+}

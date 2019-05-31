@@ -1,0 +1,250 @@
+.cm-wm-btn{
+  @include WMbg();
+  color:$font-secondary-color !important;
+}
+.noShadow{
+  box-shadow:none !important;
+}
+.mat-button{
+  border-radius:$btn-radius;
+}
+
+.cm-btn{
+  @extend %baseBtn;
+  @include WMRadius($btn-radius);
+  white-space: nowrap;
+  text-align:center;
+  display:inline-block;
+  padding:$btn-padding;
+  min-width:$btn-min-w;
+  line-height:$btn-height;
+  font-size:$base-font-size;
+  position:relative;
+  vertical-align: middle;
+  font-weight: 100;
+  &[disabled],&.disabled{
+    pointer-events: none;
+  }
+  @include ButtonRipple();
+  &:not(:last-of-type){
+    margin-right:$btn-distance;
+  }
+}
+
+@each $key,$value in $btn-size{
+  $fontSize:nth($value,1);
+  $height:nth($value,2);
+  $width:nth($value,3);
+  $pl:nth($value,4);
+  $pr:nth($value,5);
+  %btn-#{$key}{
+    font-size:$fontSize;
+    line-height:$height;
+    //height:$height;
+    min-width:$width;
+    padding-left:$pl !important;
+    padding-right:$pr !important;
+  }
+}
+.btn-sm{
+  @extend %btn-sm;
+}
+.btn-md{
+  @extend %btn-md;
+}
+.btn-sm-container{
+  @extend %btn-sm;
+  button {
+    @extend %btn-sm;
+  }
+}
+.btn-sm-block{
+  display:block;
+  width:100%;
+
+}
+
+
+
+
+.btn-outline{
+  box-shadow:none !important;
+  background: white;
+  z-index:1;
+  border-width:1px !important;
+  border:1px solid transparent !important;
+  @include Disabled();
+  &::before{
+    content:'';
+    @include FineAllBorder2($radius:$btn-radius,$color:$btn-outline-color,$index:-1);
+  }
+  .fineBorder{
+    @include BaseAbs();
+    @include Full();
+    @include WMRadius($btn-radius);
+  }
+  &.active{
+    $renderColor:map-get($colors-all,accent);
+    border-color:$renderColor !important;
+    color:$renderColor;
+    &::before{
+      border-width:0px;
+    }
+  }
+}
+.btn-disabled{
+  background-color:$color-light;
+}
+
+%baseBtn{
+  outline:none;
+  border-width:0;
+  background:transparent;
+  user-select: none;
+  color:$font-secondary-color;
+  &:focus{
+    outline:none;
+  }
+}
+
+
+.btn-pure{
+  @include Disabled();
+}
+
+%shadow-btn{
+  @include CmShadow();
+    
+}
+@each $key in $btn-colors-collection{
+  .solid-btn-#{$key}{
+    @extend %shadow-btn;
+    @include BG($key);
+    @include BgRipple($key);
+    @include Disabled($key:$key);
+  }
+}
+@each $key in $btn-pure-collection{
+  .pure-btn-#{$key}{
+    $color:map-get($colors-all,$key);
+    color:$color;
+    @include RippleOneBg($color);
+  }
+}
+@each $key in $btn-outline-collection{
+  .outline-btn-#{$key}{
+    $color:map-get($colors-all,$key);
+    color:$color;
+    &::before{
+      border-color:$color;
+    }
+  }
+}
+
+
+.btn-border{
+  border-width: 1px;
+  border-style: solid;
+}
+@each $addr,$key in $btn-border-collection{
+  .btn-border-#{$addr}{
+    $value:map-get($colors-all,$key);
+    border-color:$value;
+    color:$value;
+    @include BgRipple($key,true);
+    @include Disabled($borderKey:$key);
+  }
+}
+
+.btn-block{
+  @extend .btn-sm-block;
+  line-height:$btn-block-lineH !important;
+  @include ButtonRippleSize(block); 
+}
+.btn-full{
+  @extend .btn-block;
+
+  border-radius:0 !important;
+}
+.none-btn{
+  @extend %baseBtn;
+}
+%cm-circle-btn{
+  @extend %baseBtn;
+  @include Center();
+  border-radius:50%;
+  line-height:1;
+  width:30px;
+  height:30px;
+
+}
+.cm-circle-btn{
+  color:gray;
+  @extend %cm-circle-btn;
+  @include FineAllBorder($radius:50%);
+  &.active{
+    @include ActiveFine();
+  }
+}
+.cm-light-btn{
+  background-color:$color-underline2;
+  color:$color-font2-light;
+}
+.cm-btn-active{
+  @include An_node();
+  &:active{
+   @include BtnActive();
+  }
+}
+.cm-circle-btn-light{
+  color:gray;
+  @extend %cm-circle-btn;
+  @extend .cm-light-btn;
+  &:active{
+    @include BtnActive();
+  }
+}
+.cm-tap-sm{
+  width:30px !important;
+  height:30px !important;
+  line-height:30px !important;
+}
+._block-btn{
+  letter-spacing: 1rem;
+  text-align: center;
+}
+.btn-round{
+  &.btn-block{
+    height:$btn-round-h;
+    line-height:$btn-round-h !important;
+  }
+  &.cm-btn{
+    @include Radius($btn-round-radius);
+  }
+  &.btn-outline{
+    @include RedefineOutlineRadius($btn-round-radius);
+  }
+}
+$cm2-btn-len:34px;
+$cm2-btn-len-md:40px;
+.ztw-circle-btn{
+  @include CircleBtn($cm2-btn-len);
+  i{
+    vertical-align:middle;
+  }
+}
+.ztw-circle-btn-md{
+  @include CircleBtn($cm2-btn-len-md);
+  i{
+    vertical-align: baseline;
+  }
+}
+.cm2-circle-btn{
+  @extend .ztw-circle-btn;
+  background:$color-light2;
+
+  &.shadow{
+    @include CircleShadow()
+  }
+}
+

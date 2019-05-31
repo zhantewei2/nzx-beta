@@ -1,0 +1,12 @@
+<cm-bottom-sheet useClose="true" #sheet></cm-bottom-sheet>
+
+<ng-template #tp>
+    <div class="between flex-wrap py-5">
+        <div class="quick-share-item" *ngFor="let i of shareList" cm-ripple size="md">
+            <img [src]="i.img" alt="" class="quick-share-img">
+            <div class="title">
+                {{i.name}}
+            </div>
+        </div>
+    </div>
+</ng-template>

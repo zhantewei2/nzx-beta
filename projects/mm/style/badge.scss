@@ -1,0 +1,60 @@
+
+.cm-chip{
+  @include BaseBadge($chip-padding);
+  line-height:1.2;
+}
+
+@each $key,$value in map_merge($colors-material,(muted:gainsboro,dark:$color-wm-darken)){
+  .cm-chip-#{$key}{
+    @extend .cm-chip;
+    border:1px solid $value;
+    @include yiq-contrasted(rgba($value,.7),$font-secondary-color,$color-bg2);
+  }
+}
+@each $key,$value in $colors-all{
+  .cm-chip-outline-#{$key}{
+    @extend .cm-chip;
+    border:1px solid rgba($value,.6);
+    color:rgba($value,.6);
+  }
+}
+
+//.cm-chip-accent{
+//  opacity:.8;
+//}
+//.cm-chip-warn{
+//  opacity:.8;
+//}
+.cm-badge{
+  @include BaseBadge($badge-rect-padding);
+  border-radius:$badge-radius;
+  position:relative;
+  overflow:hidden;
+  min-width:3.5rem;
+}
+
+@each $key,$value in (light:$color-light2){
+  .cm-badge-#{$key}{
+    @extend .cm-badge;
+    background-color:$value;
+  }
+}
+.cm-badge-close-icon{
+  @include Abs(r,b,0);
+  color:$color-bg2;
+  font-size:12px;
+  transform:scale(.8,.8);
+}
+@each $key,$value in $colors-material{
+  .cm-badge-#{$key}-active{
+    color:$value;
+    background-color:LightenColor($value);
+    .cm-badge-close{
+      @include BadgeClose($value)
+    }
+  }
+}
+.cm-badge-circle{
+  @include Circle($badge-circle-len);
+  @include CircleShadow();
+}

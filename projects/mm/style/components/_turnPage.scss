@@ -1,0 +1,36 @@
+.ztw-turn-page{
+  overflow-x:hidden;
+  position:relative;
+  width:100%;
+  display:block;
+  -webkit-perspective:1000;
+}
+.cm2-turn-page-item{
+  @include BaseAbs();
+  @include Full();
+  overflow-y:auto;
+  display:none;
+  &.active{
+    display:block;
+  }
+  @include NoScrollBar();
+}
+.ztw-turn-load-block{
+  height:100px;
+
+}
+.ztw-turn-load{
+  width:50px;
+  height:50px;
+  vertical-align: middle;
+}
+.ztw-turn-bar-item{
+  @include Circle($turn-bar-item-len,50%);
+  background:white;
+  display:inline-block;
+  margin-right:5px;
+  transition:all .3s ease;
+  &.active{
+    background:$color-primary;
+  }
+}

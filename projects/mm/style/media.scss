@@ -1,0 +1,53 @@
+$media-find-search-list-title:(
+  sm:200px,
+  md:250px,
+        lg:260px
+);
+
+@each $key,$value in $media{
+    $min:nth($value,1);
+    $max:nth($value,2);
+    $str:'screen';
+    @if $min{
+        $str:'#{$str} and (min-width:#{$min}px)'
+    }
+    @if $max{
+        $str:'#{$str} and (max-width:#{$max}px)'
+    }
+
+    @media #{$str}{
+        .cm-date-content{
+            width:map-get($date-content-w,$key);
+        }
+        $media-date-ceil-h:map-get($date-ceil-hs,$key);
+        $media-upload-w:map-get($upload-media,$key);
+        $media-upload-wrapper:map-get($upload-wrapper-media,$key);
+        @if($media-date-ceil-h){
+            .cm-date-ceil{
+                height:$media-date-ceil-h !important;
+            }
+        }
+        @if($media-upload-w){
+          .ztw-upload,.cm2-upload-img{
+            width:$media-upload-w;
+            height:$media-upload-w;
+          }
+        }
+        .quick-list-title-muted{
+          width:map-get($media-find-search-list-title,$key);
+        }
+        .cm2-article{
+          $article-margin:map-get($article-media-w,$key);
+          margin-left:$article-margin;
+          margin-right:$article-margin;
+        }
+        .cm2-upload-wrapper{
+          width:$media-upload-wrapper;
+        }
+        .cm-date-ul{
+            min-height:map-get($date-content-h,$key);
+            height:map-get($date-content-h,$key);
+        }
+    }
+    
+}

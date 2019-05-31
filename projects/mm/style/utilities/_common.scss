@@ -1,0 +1,68 @@
+//percent w h:
+
+@each $key,$value in $percent-len{
+  .w-#{$key}{
+    width:$value;
+  }
+  .h-#{$key}{
+    height:$value;
+  }
+}
+.d-block{
+  display:block;
+}
+.d-inline{
+  display:inline-block;
+}
+.parent{
+  position:relative;
+}
+
+@each $value in (center,left,right){
+  .align-#{$value}{
+    text-align:$value;
+  }
+}
+.v-line{
+  display:inline-block;
+  margin:0 10px;
+  height:getUti(v-line);
+  vertical-align: middle;
+  width:1px;
+  background-color:$color-u-lt;
+}
+.over-hid{
+  overflow:hidden;
+}
+.over-x{
+  overflow-x:auto;
+}
+.pointer{
+  cursor:pointer;
+}
+@each $key,$value in $font-size{
+  .font-#{$key}{
+    font-size:$value !important;
+  }
+}
+.font-b{
+  font-weight:bold;
+}
+.full{
+  @include Full();
+}
+.nowrap{
+  white-space: nowrap;
+}
+.ellipsis{
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+.ellipsis2{
+  @extend .ellipsis;
+  display:inline-block;
+  white-space: nowrap;
+}
+.color-muted,kbd{
+  color:lighten(gray,3%);
+}

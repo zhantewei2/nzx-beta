@@ -1,0 +1,9 @@
+<span class="center prefix" *ngIf="prefix">
+    <i class="fa fa-{{prefix}}"></i>
+</span>
+<input #input class="cm2-line-input flex-1"
+    [placeholder]="placeholder"
+    [ngModel]="value"
+   (ngModelChange)="valueChange($event)"
+>
+<div class="cm2-line-input-line" [ngClass]="'theme-'+color"></div>
