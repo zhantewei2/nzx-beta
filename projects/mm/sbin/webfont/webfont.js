@@ -11,6 +11,7 @@ webfont({
 .then(async (msg)=>{
   try {
     // font
+
     for (let format of ICON.formats){
       await run_promise(
         fs.writeFile,
